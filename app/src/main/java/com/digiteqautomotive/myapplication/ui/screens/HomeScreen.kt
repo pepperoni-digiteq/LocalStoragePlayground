@@ -25,6 +25,13 @@ fun HomeScreen(navController: NavController) {
 
         Spacer(modifier = Modifier.height(8.dp))
 
+        Button(
+            onClick = { navController.navigate(Screens.Remote.name) },
+            modifier = Modifier.fillMaxWidth()
+        ) { Text("Remote Service") }
+
+        Spacer(modifier = Modifier.height(8.dp))
+
 //        Button(
 //            onClick = { navController.navigate(Screens.DataStore.name) },
 //            modifier = Modifier.fillMaxWidth()

@@ -1,0 +1,75 @@
+syntax = "proto3";
+
+option java_package = "com.example.grpc";
+option java_multiple_files = true;
+
+message SwapiResponse {
+  string message = 1;
+  Result result = 2;
+  string apiVersion = 3;
+  string timestamp = 4;
+  Support support = 5;
+  Social social = 6;
+}
+
+message Result {
+  Properties properties = 1;
+  string _id = 2;
+  string description = 3;
+  string uid = 4;
+  int32 __v = 5;
+}
+
+message Properties {
+  string created = 1;
+  string edited = 2;
+  string name = 3;
+  string gender = 4;
+  string skin_color = 5;
+  string hair_color = 6;
+  string height = 7;
+  string eye_color = 8;
+  string mass = 9;
+  string homeworld = 10;
+  string birth_year = 11;
+  string url = 12;
+}
+
+message Support {
+  string contact = 1;
+  string donate = 2;
+  PartnerDiscounts partnerDiscounts = 3;
+}
+
+message PartnerDiscounts {
+  SaberMasters saberMasters = 1;
+}
+
+message SaberMasters {
+  string link = 1;
+  string details = 2;
+}
+
+message Social {
+  string discord = 1;
+  string reddit = 2;
+  string github = 3;
+}
+
+service SwapiService {
+  rpc GetPerson(Request) returns (SwapiResponse);
+  rpc PostFeedback(FeedbackRequest) returns (StatusResponse);
+}
+
+message Request {
+  string id = 1;
+}
+
+message FeedbackRequest {
+  string user = 1;
+  string feedback = 2;
+}
+
+message StatusResponse {
+  string status = 1;
+}
